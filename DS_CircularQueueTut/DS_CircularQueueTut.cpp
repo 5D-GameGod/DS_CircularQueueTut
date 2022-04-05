@@ -6,6 +6,7 @@ class Queue
 {
 private:
     int arr[5];
+    int n = sizeof(arr)/sizeof(arr[0]);
     int front{};
     int rear{};
 
@@ -14,7 +15,7 @@ public:
     {
         front = -1;
         rear = -1;
-        for (int i{ 0 }; i < 5; i++)
+        for (int i{ 0 }; i < n; i++)
         {
             arr[i] = 0;
         }
@@ -34,7 +35,7 @@ public:
 
     bool isFull()
     {
-        if (rear == 4)
+        if (rear == n-1)
         {
             return true;
         }
@@ -97,7 +98,7 @@ public:
 
     void display()
     {
-        for (int i{ 0 }; i < 5; i++)
+        for (int i{ 0 }; i < n; i++)
         {
             cout << arr[i] << " ";
         }
