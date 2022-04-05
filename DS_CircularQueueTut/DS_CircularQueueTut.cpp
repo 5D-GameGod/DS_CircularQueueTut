@@ -2,7 +2,7 @@
 
 using namespace std;
 
-class Queue
+class CircularQueue
 {
 private:
     int arr[5];
@@ -11,7 +11,7 @@ private:
     int rear{};
 
 public:
-    Queue()
+    CircularQueue()
     {
         front = -1;
         rear = -1;
@@ -35,7 +35,7 @@ public:
 
     bool isFull()
     {
-        if (rear == n-1)
+        if ((rear+1)%n == front)
         {
             return true;
         }
@@ -107,7 +107,7 @@ public:
 
 int main()
 {
-    Queue q1;
+    CircularQueue q1;
     int option{}, value{};
 
     do
