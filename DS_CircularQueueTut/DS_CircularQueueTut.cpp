@@ -9,6 +9,7 @@ private:
     int n = sizeof(arr)/sizeof(arr[0]);
     int front{};
     int rear{};
+    int itemCount{0};
 
 public:
     CircularQueue()
@@ -47,24 +48,27 @@ public:
 
     void enqueue(int val)
     {
-        if (isEmpty())
+        if (isFull())
+        {
+            cout << "Queue is jam-packed bruh" << endl;
+            return;
+        }
+
+        else if (isEmpty())
         {
             front = 0;
             rear = 0;
             arr[rear] = val;
             cout << val << " has been succesfully added to the queue." << endl;
         }
-        else if (isFull())
-        {
-            cout << "Queue is jam-packed bruh" << endl;
-            return;
-        }
+
         else
         {
             rear = (rear+1)%n;
             arr[rear] = val;
             cout << val << " has been succesfully added to the queue." << endl;
         }
+        itemCount++;
     }
 
     int dequeue()
@@ -89,11 +93,12 @@ public:
             front = (front+1)%n;
             return x;
         }
+        itemCount--;
     }
 
     int count()
     {
-        return (rear - (front + 1));
+        return (itemCount);
     }
 
     void display()
