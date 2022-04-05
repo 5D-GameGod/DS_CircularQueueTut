@@ -86,7 +86,7 @@ public:
         {
             x = arr[front];
             arr[front] = 0;
-            front++;
+            front = (front+1)%n;
             return x;
         }
     }
