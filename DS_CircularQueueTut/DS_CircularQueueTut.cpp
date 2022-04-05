@@ -61,7 +61,7 @@ public:
         }
         else
         {
-            rear++;
+            rear = (rear+1)%n;
             arr[rear] = val;
             cout << val << " has been succesfully added to the queue." << endl;
         }
